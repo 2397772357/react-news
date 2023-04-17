@@ -49,10 +49,6 @@ function TopHeader(props) {
         background: colorBgContainer,
       }}
     >
-      {/* {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-      className: 'trigger',
-      onClick: () => setCollapsed(!collapsed),
-    })} */}
       {props.isCollapsed ? (
         <MenuUnfoldOutlined onClick={changeCollapsed} />
       ) : (

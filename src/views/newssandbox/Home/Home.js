@@ -107,7 +107,7 @@ export default function Home() {
       var myChart = ECharts.init(pieRef.current);
       setPieChart(myChart)
     }
-    var option;
+    let option;
 
     option = {
       title: {
@@ -188,7 +188,6 @@ export default function Home() {
             ]}
           >
             <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
               title={username}
               description={
                 <div>

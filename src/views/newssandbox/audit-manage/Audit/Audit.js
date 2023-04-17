@@ -1,10 +1,8 @@
-import { Button, Table, notification } from "antd";
+import { Button, Table } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 export default function Audit() {
   const [auditList, setAuditList] = useState([]);
-  const navigate = useNavigate();
   const { roleId, region, username } = JSON.parse(
     localStorage.getItem("token")
   );

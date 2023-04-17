@@ -51,7 +51,7 @@ export default function NewsAdd() {
     axios.post('http://localhost:8000/news',{
       ...formInfo,
       content,
-      region:User.region?User.region:"全球",
+      region:User.region?User.region:"成都",
       author:User.username,
       roleId:User.roleId,
       auditState:auditState,
@@ -99,7 +99,7 @@ export default function NewsAdd() {
               label="新闻标题"
               name="title"
               rules={[
-                { required: true, message: "Please input your username!" },
+                { required: true, message: "请输入新闻标题!" },
               ]}
             >
               <Input />
@@ -109,7 +109,7 @@ export default function NewsAdd() {
               label="新闻分类"
               name="categoryId"
               rules={[
-                { required: true, message: "Please input your password!" },
+                { required: true, message: "请选择新闻分类!" },
               ]}
             >
               <Select>

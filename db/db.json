@@ -44,6 +44,20 @@
       "view": 0,
       "id": 5,
       "publishTime": 1678262692879
+    },
+    {
+      "title": "d851as5",
+      "categoryId": 4,
+      "content": "<p>dsaidjiasdjniasjpgfjapsjgpoajgpoajspgsajpojfpoasjipo</p>\n",
+      "region": "成都",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 1,
+      "publishState": 0,
+      "createTime": 1679498396079,
+      "star": 0,
+      "view": 0,
+      "id": 6
     }
   ],
   "categories": [
@@ -117,7 +131,6 @@
       "roleType": 1,
       "rights": [
         "/user-manage",
-        "/right-manage",
         "/right-manage/role/list",
         "/right-manage/right/list",
         "/right-manage/role/update",
@@ -134,15 +147,16 @@
         "/audit-manage",
         "/audit-manage/audit",
         "/audit-manage/list",
-        "/publish-manage",
         "/publish-manage/unpublished",
         "/publish-manage/published",
-        "/publish-manage/sunset",
         "/user-manage/delete",
         "/user-manage/add",
         "/user-manage/update",
         "/user-manage/list",
-        "/home"
+        "/right-manage",
+        "/publish-manage",
+        "/home",
+        "/publish-manage/sunset"
       ]
     },
     {
@@ -161,7 +175,6 @@
         "/news-manage/update/:id",
         "/news-manage/preview/:id",
         "/news-manage/draft",
-        "/news-manage/category",
         "/audit-manage/audit",
         "/audit-manage/list",
         "/publish-manage",
@@ -183,13 +196,13 @@
         "/news-manage/update/:id",
         "/news-manage/preview/:id",
         "/news-manage/draft",
-        "/audit-manage",
-        "/audit-manage/list",
         "/publish-manage",
         "/publish-manage/unpublished",
         "/publish-manage/published",
         "/publish-manage/sunset",
-        "/home"
+        "/home",
+        "/audit-manage/list",
+        "/audit-manage"
       ]
     }
   ],

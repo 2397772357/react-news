@@ -18,30 +18,42 @@ import NewsSandBox from "../views/newssandbox/newssandbox";
 // import NewsPreview from "../views/newssandbox/news-manage/NewsPreview/NewsPreview";
 // import NewsUpdate from "../views/newssandbox/news-manage/NewsUpdate/NewsUpdate";
 
-const UserList = lazy(() => import(`../views/newssandbox/Userlist/User`))
-const RightList = lazy(() => import(`../views/newssandbox/rightlist/Right`))
-const RoleList = lazy(() => import(`../views/newssandbox/rolelist/Role`))
-const NoPermission = lazy(() => import(`../views/newssandbox/NoPermission/NoPermission`))
-const Audit = lazy(() => import(`../views/newssandbox/audit-manage/Audit/Audit.js`))
-const AuditList = lazy(() => import(`../views/newssandbox/audit-manage/AuditList/AuditList.js`))
-const NewsAdd = lazy(() => import(`../views/newssandbox/news-manage/NewsAdd/NewsAdd.js`))
-const NewsCategory = lazy(() => import(`../views/newssandbox/news-manage/NewsCategory/NewsCategory.js`))
-const NewsDraft = lazy(() => import(`../views/newssandbox/news-manage/NewsDraft/NewsDraft.js`))
-const Published = lazy(() => import(`../views/newssandbox/publish-manage/Published/Published.js`))
-const Unpublished = lazy(() => import(`../views/newssandbox/publish-manage/Unpublished/Unpublished.js`))
-const Sunset = lazy(() => import(`../views/newssandbox/publish-manage/Sunset/Sunset.js`))
-const NewsPreview = lazy(() => import(`../views/newssandbox/news-manage/NewsPreview/NewsPreview`))
-const NewsUpdate = lazy(() => import(`../views/newssandbox/news-manage/NewsUpdate/NewsUpdate`))
-// 快速导入工具函数
-const lazyLoad = (moduleName) => {
-  const Module = lazy(() => import(`../views/${moduleName}`));
-  return <Module />;
-};
-// 路由鉴权组件
-const Appraisal = ({ children }) => {
-  const token = localStorage.getItem("token");
-  return token ? children : <Navigate to="/login" />;
-};
+const UserList = lazy(() => import(`../views/newssandbox/Userlist/User`));
+const RightList = lazy(() => import(`../views/newssandbox/rightlist/Right`));
+const RoleList = lazy(() => import(`../views/newssandbox/rolelist/Role`));
+const NoPermission = lazy(() =>
+  import(`../views/newssandbox/NoPermission/NoPermission`)
+);
+const Audit = lazy(() =>
+  import(`../views/newssandbox/audit-manage/Audit/Audit.js`)
+);
+const AuditList = lazy(() =>
+  import(`../views/newssandbox/audit-manage/AuditList/AuditList.js`)
+);
+const NewsAdd = lazy(() =>
+  import(`../views/newssandbox/news-manage/NewsAdd/NewsAdd.js`)
+);
+const NewsCategory = lazy(() =>
+  import(`../views/newssandbox/news-manage/NewsCategory/NewsCategory.js`)
+);
+const NewsDraft = lazy(() =>
+  import(`../views/newssandbox/news-manage/NewsDraft/NewsDraft.js`)
+);
+const Published = lazy(() =>
+  import(`../views/newssandbox/publish-manage/Published/Published.js`)
+);
+const Unpublished = lazy(() =>
+  import(`../views/newssandbox/publish-manage/Unpublished/Unpublished.js`)
+);
+const Sunset = lazy(() =>
+  import(`../views/newssandbox/publish-manage/Sunset/Sunset.js`)
+);
+const NewsPreview = lazy(() =>
+  import(`../views/newssandbox/news-manage/NewsPreview/NewsPreview`)
+);
+const NewsUpdate = lazy(() =>
+  import(`../views/newssandbox/news-manage/NewsUpdate/NewsUpdate`)
+);
 
 export default [
   {
@@ -50,11 +62,7 @@ export default [
   },
   {
     path: "/",
-    element: (
-      <Appraisal>
-        <NewsSandBox></NewsSandBox>
-      </Appraisal>
-    ),
+    element: <NewsSandBox></NewsSandBox>,
     children: [
       {
         path: "home",

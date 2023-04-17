@@ -105,7 +105,7 @@ export default function NewsUpdate() {
               label="新闻标题"
               name="title"
               rules={[
-                { required: true, message: "Please input your username!" },
+                { required: true, message: "请输入新闻标题!" },
               ]}
             >
               <Input />
@@ -115,7 +115,7 @@ export default function NewsUpdate() {
               label="新闻分类"
               name="categoryId"
               rules={[
-                { required: true, message: "Please input your password!" },
+                { required: true, message: "请选择新闻分类!" },
               ]}
             >
               <Select>

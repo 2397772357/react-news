@@ -9,7 +9,7 @@ const { Sider } = Layout;
 function SideMenu(props) {
   let navigate = useNavigate();
   let location = useLocation();
-  const selectKeys = [location.pathname]; // ex: ['/home']
+  const selectKeys = [location.pathname]; 
   const openKeys = ["/" + location.pathname.split("/")[1]];
   const [menu, setMenu] = useState([]);
   const {

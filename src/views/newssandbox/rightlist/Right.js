@@ -71,7 +71,7 @@ export default function Right() {
     },
     {
       title: "权限名称",
-      dataIndex: "label",
+      dataIndex: "title",
     },
     {
       title: "权限路径",
@@ -92,13 +92,13 @@ export default function Right() {
                 </div>
               }
               title="页面配置项"
-              trigger={item.pagepermission === undefined ? "" : "click"}
+              trigger={(item.pagepermission === undefined || item.key === '/right-manage' || item.key === '/right-manage/right/list') ? "" : "click"}
             >
               <Button
                 type="primary"
                 shape="circle"
                 icon={<EditOutlined />}
-                disabled={item.pagepermission === undefined}
+                disabled={item.pagepermission === undefined || item.key === '/right-manage'|| item.key === '/right-manage/right/list'}
               />
             </Popover>
             <Button

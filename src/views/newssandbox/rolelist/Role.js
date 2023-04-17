@@ -3,10 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {
   EditOutlined,
-  DeleteOutlined,
-  ExclamationCircleFilled,
 } from "@ant-design/icons";
-const { confirm } = Modal;
 
 export default function Role() {
   const [dataSource, setdataSource] = useState([]);
@@ -32,21 +29,6 @@ export default function Role() {
     getRoleList();
     getRightList();
   }, []);
-  const confirmMessage = (item) => {
-    confirm({
-      title: "你确定要删除吗?",
-      icon: <ExclamationCircleFilled />,
-      onOk() {
-        deletMethon(item);
-      },
-    });
-  };
-  const deletMethon = async (item) => {
-    const { data } = await axios.delete(
-      `http://localhost:8000/roles/${item.id}`
-    );
-    getRoleList();
-  };
   const handleOk = async() => {
     await axios.patch(
       `http://localhost:8000/roles/${currentId}`,{
@@ -87,14 +69,6 @@ export default function Role() {
                 setIsModalOpen(true);
                 setCurrentRights([...item.rights])
                 setCurrentId(item.id)
-              }}
-            />
-            <Button
-              danger
-              shape="circle"
-              icon={<DeleteOutlined />}
-              onClick={() => {
-                confirmMessage(item);
               }}
             />
           </div>

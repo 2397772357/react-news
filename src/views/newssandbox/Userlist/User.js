@@ -15,7 +15,7 @@ export default function User() {
   const [regionList, setRegionList] = useState([]);
   const [isAddOpen, setisAddOpen] = useState(false);
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
-  const [isUpdateDisabled, setIsUpdateDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [current, setCurrent] = useState(null);
   const addForm = useRef(null);
   const updateForm = useRef(null);
@@ -76,9 +76,7 @@ export default function User() {
   };
 
   const deletMethon = async (item) => {
-    const { data } = await axios.delete(
-      `http://localhost:8000/users/${item.id}`
-    );
+    await axios.delete(`http://localhost:8000/users/${item.id}`);
     getUserList();
   };
 
@@ -92,7 +90,7 @@ export default function User() {
       .then(async (value) => {
         setisAddOpen(false);
         addForm.current.resetFields();
-        const { data } = await axios.post(`http://localhost:8000/users`, {
+        await axios.post(`http://localhost:8000/users`, {
           ...value,
           roleState: true,
           dafault: false,
@@ -105,31 +103,27 @@ export default function User() {
   };
 
   const handleChange = async (item) => {
-    const { data } = await axios.patch(
-      `http://localhost:8000/users/${item.id}`,
-      {
-        roleState: !item.roleState,
-      }
-    );
+    await axios.patch(`http://localhost:8000/users/${item.id}`, {
+      roleState: !item.roleState,
+    });
     getUserList();
   };
 
   const handleUpdate = (item) => {
     if (item.roleId === 1) {
-      setIsUpdateDisabled(true);
+      setIsDisabled(true);
     } else {
-      setIsUpdateDisabled(false);
+      setIsDisabled(false);
     }
+    setCurrent(item);
     setIsUpdateOpen(true);
     setTimeout(() => {
       updateForm.current.setFieldsValue(item);
     }, 0);
-    setCurrent(item);
   };
 
   const handleUpdateCancel = () => {
     setIsUpdateOpen(false);
-    setIsUpdateDisabled(!isUpdateDisabled);
   };
 
   const updateFormOk = () => {
@@ -138,31 +132,27 @@ export default function User() {
       .then(async (value) => {
         setIsUpdateOpen(false);
         updateForm.current.resetFields();
-        const { data } = await axios.patch(
-          `http://localhost:8000/users/${current.id}`,
-          {
-            ...value,
-          }
-        );
+        await axios.patch(`http://localhost:8000/users/${current.id}`, {
+          ...value,
+        });
         getUserList();
       })
       .catch(() => {
         console.log("error");
       });
-    setIsUpdateDisabled(!isUpdateDisabled);
   };
 
   const columns = [
     {
       title: "区域",
       dataIndex: "region",
-      filters: [...regionList, { text: "全球", value: "全球" }],
+      filters: [...regionList, { text: "成都", value: "成都" }],
       onFilter: (value, item) => {
-        if (value === "全球") return item.region === "";
+        if (value === "成都") return item.region === "";
         return item.region === value;
       },
       render(region) {
-        return <b>{region === "" ? "全球" : region}</b>;
+        return <b>{region === "" ? "成都" : region}</b>;
       },
     },
     {
@@ -244,6 +234,8 @@ export default function User() {
           roleList={roleList}
           regionList={regionList}
           ref={addForm}
+          isDisabled={isDisabled}
+          setIsDisabled={setIsDisabled}
         ></UserForm>
       </Modal>
 
@@ -261,8 +253,9 @@ export default function User() {
           roleList={roleList}
           regionList={regionList}
           ref={updateForm}
-          isUpdateDisabled={isUpdateDisabled}
           isUpdate={true}
+          isDisabled={isDisabled}
+          setIsDisabled={setIsDisabled}
         ></UserForm>
       </Modal>
     </div>

@@ -7,7 +7,6 @@ function App() {
   let element = useRoutes(IndexRouter);
   return (
     <Provider store={store}>
-      
         <div className="App">{element}</div>
     </Provider>
   );

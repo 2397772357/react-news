@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { Descriptions } from "antd";
 import axios from "axios";
 import moment from "moment/moment";
-export default function NewsPreview(props) {
+export default function NewsPreview() {
   const [newsInfo, setNewsInfo] = useState(null);
   const params = useParams();
   const auditList = ["未审核","审核中","已通过","未通过"]
